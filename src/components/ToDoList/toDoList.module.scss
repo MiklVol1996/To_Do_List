@@ -1,0 +1,286 @@
+%tplcolor {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 5px 2px;
+}
+
+%tplWrap {
+    border: 1px solid black;
+    width: 330px;
+    margin: 35px 35px;
+    position: relative;
+    height: fit-content;
+    border-radius: 15px;
+}
+
+@mixin isDoneCheck($i){
+    border: 2px solid $i;
+}
+
+@mixin color($e, $q) {
+    @extend %tplWrap;
+    background-color: $e;
+    border: 2px solid $q;
+    input{
+        border-radius: 7px;
+        border: 2px solid $q;
+        outline: none;
+        background-color: rgb(236, 236, 236);
+    }
+}
+
+@mixin color2($t) {
+    background-color: $t;
+    @extend %tplcolor;
+}
+
+$blue: rgb(151, 177, 247);
+$blueBorder: rgb(7, 89, 145);
+$green: rgb(183, 252, 214);
+$greenBorder: rgb(1, 121, 55);
+$pink: rgb(250, 194, 216);
+$pinkBorder: rgb(151, 9, 63);
+$violet: rgb(221, 175, 252);
+$violetBorder: rgb(82, 10, 131);
+$yellow: rgb(247, 222, 141);
+$yellowBorder: rgb(189, 145, 0);
+$grey: rgb(122, 122, 122);
+$greyBorder: rgb(22, 22, 22);
+$red: rgb(255, 181, 181);
+$redBorder: rgb(197, 32, 3);
+$ocean: rgb(230, 247, 169);
+$oceanBorder: rgb(134, 161, 36);
+
+.ListWrap {
+    @extend %tplWrap;
+
+    .title {
+        font-size: 23px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        margin-top: 8px;
+        text-align: left;
+        font-style: italic;
+        width: 82%;
+        margin-left: 22px;
+        span:hover{
+            cursor: pointer;
+        }
+    }
+
+    .usual, .done{
+        margin-left: 18px;
+        span{
+            font-weight: 600;
+            font-size: 17px;
+            font-style: italic;
+            display: inline-block;
+            max-width: 220px;
+            word-wrap: break-word;
+            margin: 0 10px;
+        }
+        display: flex;
+        padding: 0 5px;
+        margin-bottom: 20px;
+        .close{
+            width: 15px;
+            height: 15px;
+            position: relative;
+            top: 5px;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+
+    .done {
+        text-decoration: line-through;
+        span{
+            opacity: 0.9;
+        }
+    }
+
+    .active {
+        border: 2px solid black;
+        font-weight: 500;
+    }
+
+    .flex{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+        margin-left: 8px;
+        margin-right: 8px;
+        div{
+            margin-left: 6px;
+            height: 23px;
+            width: 25px;
+        }
+        input{
+            width: 75%;
+            height: 22px;
+            padding-left: 10px;
+        }
+    } 
+
+    .setColor{
+        width: 80px;
+        height: 25px;
+        margin-left: 22px;
+        margin-bottom: 19px;
+        border-radius: 10px;
+        margin-top: 40px;
+        text-align: center;
+        &:hover{
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+        }
+    }
+
+    .closeList{
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        height: 20px;
+        width: 20px;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+    &.blue {
+        @include color($blue, $blueBorder);
+    }
+
+    &.green {
+        @include color($green, $greenBorder);
+    }
+
+    &.pink {
+        @include color($pink, $pinkBorder);
+    }
+
+    &.violet {
+        @include color($violet, $violetBorder);
+    }
+
+    &.yellow {
+        @include color($yellow, $yellowBorder);
+    }
+
+    &.grey {
+        @include color($grey, $greyBorder);
+    }
+
+    &.red {
+        @include color($red, $redBorder);
+    }
+
+    &.ocean {
+        @include color($ocean, $oceanBorder);
+    }
+}
+
+.colors {
+    width: 195px;
+    height: 30px;
+    position: absolute;
+    bottom: 18px;
+    left: 112px;
+    background-color: #2e2e2e;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 12px;
+
+    .blue {
+        @include color2($blue);
+    }
+
+    .green {
+        @include color2($green);
+    }
+
+    .pink {
+        @include color2($pink);
+    }
+
+    .violet {
+        @include color2($violet);
+    }
+
+    .yellow {
+        @include color2($yellow);
+    }
+
+    .grey {
+        @include color2($grey);
+    }
+
+    .red {
+        @include color2($red);
+    }
+
+    .ocean {
+        @include color2($ocean);
+    }
+}
+
+.isDoneChecked{
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+    &:hover{
+        cursor: pointer;
+    }
+    img{
+        position: absolute;
+        width: 28px;
+        height: 28px;
+        bottom: 0px; 
+    }
+    .add{
+        position: absolute;
+        top: -3px;
+        right: -2px; 
+    }
+}
+
+.isDoneChecked, .active, .setColor{
+    &.blue {
+        @include isDoneCheck($blueBorder);
+    }
+
+    &.green {
+        @include isDoneCheck($greenBorder);
+    }
+
+    &.pink {
+        @include isDoneCheck($pinkBorder);
+    }
+
+    &.violet {
+        @include isDoneCheck($violetBorder);
+    }
+
+    &.yellow {
+        @include isDoneCheck($yellowBorder);
+    }
+
+    &.grey {
+        @include isDoneCheck($greyBorder);
+    }
+
+    &.red {
+        @include isDoneCheck($redBorder);
+    }
+
+    &.ocean {
+        @include isDoneCheck($oceanBorder);
+    }
+}

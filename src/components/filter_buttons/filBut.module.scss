@@ -1,0 +1,21 @@
+.flex{
+    display: flex;
+    width: 87%;
+    margin: 0 auto;
+    justify-content: space-between;
+    margin-bottom: 25px;    
+    margin-top: 20px;
+    div{
+        border-radius: 12px;
+        padding: 2px 5px;
+        width: 77px;
+        text-align: center;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    .usual:hover{
+       font-weight: 600;
+       transition: 200ms;
+    }
+}

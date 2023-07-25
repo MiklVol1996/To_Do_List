@@ -17,7 +17,7 @@ const App: React.FC = () => {
   useEffect(() => {
     const dataFromStorage = localStorage.getItem('ToDoList');
     const parsedData: StorageData = JSON.parse(dataFromStorage as string);
-    if (parsedData.lists.length) {
+    if (parsedData?.lists.length) {
       dispatch(actions.setToDoLists({ ToDoLists: parsedData.lists }));
       dispatch(actions.setTasks({ tasks: parsedData.tasks }));
     }

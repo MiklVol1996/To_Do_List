@@ -2,7 +2,7 @@
     display: flex;
     width: 87%;
     margin: 0 auto;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-bottom: 25px;    
     margin-top: 20px;
     div{
@@ -13,6 +13,12 @@
         &:hover{
             cursor: pointer;
         }
+    }
+    .usual{
+        border: 2px solid rgba(255, 0, 0, .0);
+        -webkit-background-clip: padding-box; 
+        background-clip: padding-box;
+            
     }
     .usual:hover{
        font-weight: 600;

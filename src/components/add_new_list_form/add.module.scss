@@ -11,18 +11,34 @@
         border-radius: 12px;
         border: none;
         outline: none;
+        padding: 0 0 0 10px;
     }
     div{
-        border: 1px solid black;
-        border-radius: 12px;
+        border-radius: 14px;
         padding: 2px 5px;
         position: relative;
+        background-color: #fff;
+        padding: 4px 9px;
+        height: 18px;
+        line-height: 16px;
+        font-size: 15px;
         &:hover{
             cursor: pointer;
-            background-color: #fff;
+            background-color: #d6d6d6;
         }
         &:active{
             top: 2px;
         }
     }
 }
+
+@media (max-width: 1140px) {
+    .createListWrap {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+    input{
+        margin-bottom: 15px;
+    }
+  }

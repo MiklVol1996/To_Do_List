@@ -1,33 +1,25 @@
 import React, { useState } from 'react';
-import classes from '../ToDoList/toDoList.module.scss';
-import add from '../../images/add.jpg';
-import { AppUseDispatch } from '../../redux/store';
-import { actions } from '../../redux/toDoListReducer';
+import classes from '../to_do_list/toDoList.module.scss';
+import plus from '../../images/plus.svg';
 import { KeyboardEvent, ChangeEvent } from 'react';
+import { Props } from './types';
 
-type Props = {
-    listID: string,
-    backgroundColor: string,
-}
-
-const NewTaskInput: React.FC<Props> = React.memo(({ listID, backgroundColor }) => {
+const NewTaskInput: React.FC<Props> = React.memo(({  backgroundColor, addNewTask }) => {
 
     let [newTaskValue, setNewTaskValue] = useState('');
-
-    const dispatch = AppUseDispatch();
 
     const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         setNewTaskValue(e.target.value);
     }
 
     const onAddNewTask = () => {
-        dispatch(actions.addNewTask({ listID: listID, title: newTaskValue }));
+        addNewTask(newTaskValue);
         setNewTaskValue('');
     }
 
     const onKeyDown = (e: KeyboardEvent) => {
         if (e.key === 'Enter') {
-            dispatch(actions.addNewTask({ listID: listID, title: newTaskValue }));
+            addNewTask(newTaskValue);
             setNewTaskValue('');
         }
     }
@@ -37,7 +29,7 @@ const NewTaskInput: React.FC<Props> = React.memo(({ listID, backgroundColor }) =
             <input value={newTaskValue} placeholder='Enter new task...' onChange={onInputChange}
                 onKeyDown={onKeyDown} />
             <div className={classes.isDoneChecked + ' ' + classes[backgroundColor]} onClick={onAddNewTask}>
-                <img src={add} className={classes.add} />
+                <img src={plus} className={classes.add} />
             </div>
         </div>
     )

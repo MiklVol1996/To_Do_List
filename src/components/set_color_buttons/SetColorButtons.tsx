@@ -1,10 +1,6 @@
 import React from 'react';
-import classes from '../ToDoList/toDoList.module.scss';
-
-type Props = {
-    setColorMode: (data: boolean) => void,
-    backgroundColor: string,
-}
+import classes from '../to_do_list/toDoList.module.scss';
+import { Props } from './types';
 
 
 const SetColorButton: React.FC<Props> = React.memo(({ setColorMode, backgroundColor }) => {

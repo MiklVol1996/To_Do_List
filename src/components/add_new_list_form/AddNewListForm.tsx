@@ -1,17 +1,16 @@
 import React, { useState } from "react"
 import { ChangeEvent, KeyboardEvent } from "react";
-import { AppUseDispatch } from "../../redux/store";
-import { actions } from "../../redux/toDoListReducer";
 import classes from './add.module.scss';
+import { Props } from "./types";
 
-const AddNewListForm: React.FC = React.memo(() => {
+
+const AddNewListForm: React.FC<Props> = ({ addNewList }) => {
 
   let [newListTitle, setNewListTitle] = useState('');
-  const dispatch = AppUseDispatch();
 
   const onListAdd = () => {
     if (newListTitle) {
-      dispatch(actions.addNewList(newListTitle));
+      addNewList(newListTitle);
       setNewListTitle('');
     }
   }
@@ -22,7 +21,7 @@ const AddNewListForm: React.FC = React.memo(() => {
 
   const onKeyDown = (e: KeyboardEvent) => {
     if (e.key === 'Enter') {
-      dispatch(actions.addNewList(newListTitle));
+      addNewList(newListTitle);
       setNewListTitle('');
     }
   }
@@ -34,6 +33,6 @@ const AddNewListForm: React.FC = React.memo(() => {
       <div onClick={onListAdd}>Add new list</div>
     </div>
   )
-})
+}
 
 export default AddNewListForm;

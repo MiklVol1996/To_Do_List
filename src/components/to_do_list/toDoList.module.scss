@@ -70,6 +70,9 @@ $oceanBorder: rgb(134, 161, 36);
     }
 
     .usual, .done{
+        &:hover{
+            cursor: pointer;
+        }
         margin-left: 18px;
         span{
             font-weight: 600;
@@ -84,10 +87,10 @@ $oceanBorder: rgb(134, 161, 36);
         padding: 0 5px;
         margin-bottom: 20px;
         .close{
-            width: 15px;
-            height: 15px;
+            width: 20px;
+            height: 20px;
             position: relative;
-            top: 5px;
+            top: 2px;
             &:hover{
                 cursor: pointer;
             }
@@ -95,21 +98,22 @@ $oceanBorder: rgb(134, 161, 36);
     }
 
     .done {
-        text-decoration: line-through;
         span{
             opacity: 0.9;
+            text-decoration-color: rgb(0, 0, 0);
+            text-decoration-line: line-through;
         }
     }
 
     .active {
-        border: 2px solid black;
+        border: 2px solid rgb(155, 104, 104);
         font-weight: 500;
     }
 
     .flex{
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: start;
         margin-bottom: 20px;
         margin-left: 8px;
         margin-right: 8px;
@@ -117,6 +121,7 @@ $oceanBorder: rgb(134, 161, 36);
             margin-left: 6px;
             height: 23px;
             width: 25px;
+            background-color: rgb(236, 236, 236);
         }
         input{
             width: 75%;
@@ -144,8 +149,8 @@ $oceanBorder: rgb(134, 161, 36);
         position: absolute;
         top: 6px;
         right: 6px;
-        height: 20px;
-        width: 20px;
+        height: 22px;
+        width: 22px;
         &:hover{
             cursor: pointer;
         }
@@ -173,6 +178,7 @@ $oceanBorder: rgb(134, 161, 36);
 
     &.grey {
         @include color($grey, $greyBorder);
+        color: #fff;
     }
 
     &.red {
@@ -181,6 +187,18 @@ $oceanBorder: rgb(134, 161, 36);
 
     &.ocean {
         @include color($ocean, $oceanBorder);
+    }
+}
+
+.colorsWrap{
+    img{
+        width: 20px;
+        position: absolute;
+        bottom: 51px;
+        right: 27px;
+        &:hover{
+            cursor: pointer;
+        }
     }
 }
 

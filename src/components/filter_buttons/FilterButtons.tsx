@@ -1,37 +1,38 @@
 import React from 'react';
-import classes from '../ToDoList/toDoList.module.scss';
+import classes from '../to_do_list/toDoList.module.scss';
 import newClasses from './filBut.module.scss';
-import { AppUseDispatch } from '../../redux/store';
-import { actions } from '../../redux/toDoListReducer';
+import { AppUseDispatch } from '../../store/store';
+import { actions } from '../../store/toDoListReducer';
+import { Props } from './types';
 
-type Props = {
-  filter: string,
-  listID: string,
-  backgroundColor: string,
-}
 
-const FilterButtons: React.FC<Props> = React.memo(({ listID, filter, backgroundColor }) => {
+const FilterButtons: React.FC<Props> = React.memo(({ listID, filter, backgroundColor, statuses }) => {
 
+  const { all, active, done } = statuses;
   const dispatch = AppUseDispatch();
 
   const onFilterButClick = (filter: string) => {
     dispatch(actions.changeListFilter({ filter: filter, listID: listID }))
   }
 
+  const getClassName = (currntFilter: string, filter: string) => {
+    return currntFilter === filter ? classes.active + ' ' + classes[backgroundColor] : newClasses['usual'];
+  }
+
   return (
     <div className={newClasses.flex}>
-      <div onClick={() => onFilterButClick('All')}
-        className={filter === 'All' ? classes.active + ' ' + classes[backgroundColor] : newClasses['usual']}>
-        All
-      </div>
-      <div onClick={() => onFilterButClick('Done')}
-        className={filter === 'Done' ? classes.active + ' ' + classes[backgroundColor] : newClasses['usual']}>
-        Done
-      </div>
-      <div onClick={() => onFilterButClick('Active')}
-        className={filter === 'Active' ? classes.active + ' ' + classes[backgroundColor] : newClasses['usual']}>
-        Active
-      </div>
+      {all > 0 && <div onClick={() => onFilterButClick('All')}
+        className={getClassName(filter, 'All')}>
+        All {all}
+      </div>}
+      {active > 0 && <div onClick={() => onFilterButClick('Active')}
+        className={getClassName(filter, 'Active')}>
+        Active {active}
+      </div>}
+      {done > 0 && <div onClick={() => onFilterButClick('Done')}
+        className={getClassName(filter, 'Done')}>
+        Done {done}
+      </div>}
     </div>
   )
 })
